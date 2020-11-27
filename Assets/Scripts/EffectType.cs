@@ -1,1 +1,0 @@
-﻿public enum EffectType { NONE, SPEED, JUMP_HEIGHT }

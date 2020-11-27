@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SFX_PlayerJump : PlaySFX
 {
-    private PlayerMovement _movement;
+    private PlayerJump _jump;
 
     private void Start()
     {
-        _movement = GetComponent<PlayerMovement>();
+        _jump = GetComponent<PlayerJump>();
 
-        _movement.Jump += Run;
+        _jump.Jump += Run;
     }
 }

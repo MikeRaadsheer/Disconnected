@@ -54,13 +54,11 @@ public class SettingsManager : MonoBehaviour
     public void SaveSettings()
     {
         _data.Save("Settings", _settings);
-        Debug.Log("Saved: Settings");
     }
 
     public void SetFov(int _val)
     {
         _settings.Fov = _val;
-        Debug.Log("Update: Fov" + _val);
         if (_updateActively)
         {
             SaveSettings();
@@ -70,7 +68,6 @@ public class SettingsManager : MonoBehaviour
     public void SetSensitifity(int _val)
     {
         _settings.MouseSensetivity = _val;
-        Debug.Log("Update: Sensitifity" + _val);
         if (_updateActively)
         {
             SaveSettings();

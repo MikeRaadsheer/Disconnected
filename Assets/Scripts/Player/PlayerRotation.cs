@@ -38,11 +38,8 @@ public class PlayerRotation : MonoBehaviour
         _player.Rotate(Vector3.up * mouseX);
 
         _settings = _settingsManager.GetSettings();
-        if(_mouseSensitifity != _settings.MouseSensetivity || _cam.fieldOfView != _settings.Fov)
-        {
-            _mouseSensitifity = _settings.MouseSensetivity;
-            _cam.fieldOfView = _settings.Fov;
-        }
+
+        // TODO: Update Sens and FOV with Action.
 
     }
 }

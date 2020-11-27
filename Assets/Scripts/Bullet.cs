@@ -14,8 +14,9 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag != "Player")
+        if(other.GetComponent<PlayerStats>())
         {
+            other.GetComponent<PlayerStats>().Power -= 10f;
             Destroy(gameObject);
         }   
     }

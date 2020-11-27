@@ -6,9 +6,33 @@ using UnityEngine;
 [Serializable]
 public class Settings
 {
-    public int Fov = 60;
-    public float MouseSensetivity = 100f;
+    private int fov = 60;
+    private float mouseSensetivity = 100f;
 
+    public int Fov
+    {
+        get
+        {
+            return fov;
+        }
+
+        set
+        {
+            fov = value;
+        }
+    }
+    public float MouseSensetivity
+    {
+        get
+        {
+            return mouseSensetivity;
+        }
+
+        set
+        {
+            mouseSensetivity = value;
+        }
+    }
 }
 
 public enum Setting { FOV, MOUSE_SENSETIVITY }

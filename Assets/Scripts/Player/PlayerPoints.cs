@@ -18,19 +18,6 @@ public class PlayerPoints : MonoBehaviour
             _alert = other.GetComponent<PickUpAlert>();
         }
 
-        if (other.gameObject.tag == "Points")
-        {
-            if (_alert != null)
-            {
-                _alert.Alert();
-            }
-
-            if (UpdatePoints != null)
-            {
-                Points points = other.GetComponent<Points>();
-                _points += points.GetPoints();
-                UpdatePoints(_points);
-            }
-        }
+        
     }
 }

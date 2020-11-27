@@ -20,6 +20,13 @@ public class MenuCommands : MonoBehaviour
         menu.SetActive(true);
     }
 
+    public void SwitchMenu(GameObject thisMenu, GameObject otherMenu)
+    {
+        thisMenu.SetActive(false);
+        otherMenu.SetActive(true);
+    }
+
+
     public void SetTimeScale(float timeScale)
     {
         Time.timeScale = timeScale;
