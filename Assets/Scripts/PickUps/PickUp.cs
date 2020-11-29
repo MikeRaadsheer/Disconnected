@@ -6,10 +6,10 @@ public class PickUp : MonoBehaviour
 {
     public EffectType type;
     public float duration = 0f;
+    public float amount = 0f;
 
     public virtual void Run()
     {
         Debug.Log("Picked Up: " + gameObject.name);
-        Destroy(this);
     }
 }

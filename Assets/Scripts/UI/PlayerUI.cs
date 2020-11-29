@@ -6,19 +6,19 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    private PlayerStats _starts;
+    private PlayerStats _stats;
 
     [SerializeField]
     private GameObject _deathScreen;
 
-    public TMP_Text powerTxt;
-    public TMP_Text scoreTxt;
+    public TextMeshProUGUI powerTxt;
+    public TextMeshProUGUI scoreTxt;
 
     void Start()
     {
-        _starts = FindObjectOfType<PlayerStats>();
-        _starts.UpdatePower += SetPowerTxt;
-        _starts.UpdateScore += SetScoreTxt;
+        _stats = FindObjectOfType<PlayerStats>();
+        _stats.UpdatePower += SetPowerTxt;
+        _stats.UpdateScore += SetScoreTxt;
     }
 
     private void SetPowerTxt(float value)

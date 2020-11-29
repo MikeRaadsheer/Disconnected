@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6807591228740363579}
   - component: {fileID: 5129124788448606153}
   - component: {fileID: 336522520853485402}
-  - component: {fileID: 1693780072533030470}
+  - component: {fileID: 1715027074807507508}
   m_Layer: 0
   m_Name: SpeedBuff
   m_TagString: Buff
@@ -109,7 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4667a66da5119b48aee13283dca82ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1693780072533030470
+  _axis: 1
+--- !u!114 &1715027074807507508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,9 +119,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5006191167147984110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35143cff0beb1eb458ca13006848cce2, type: 3}
+  m_Script: {fileID: 11500000, guid: 04c2fdd25057afa43a34a5e83f996f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
-  modifierAmount: 1.5
-  type: 0
+  type: 1
+  duration: 30
+  amount: 2
+  color: {r: 0.68235296, g: 1, b: 0.6862745, a: 0.39607844}

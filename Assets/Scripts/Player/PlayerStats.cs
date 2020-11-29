@@ -5,31 +5,33 @@ using System;
 
 public class PlayerStats : MonoBehaviour
 {
+    private bool _isBuffed = false;
 
-    private float maxPower = 100f;
-    private float power = 100f;
+    private float _maxPower = 100f;
+    private float _power = 100f;
 
-    private float moveSpeed = 20f;
-    private float moveSpeedModifier = 1f;
+    private float _moveSpeed = 20f;
+    private float _moveSpeedModifier = 1f;
 
-    private float jumpHeight = 3f;
-    private float jumpHeightModifier = 1f;
+    private float _jumpHeight = 3f;
+    private float _jumpHeightModifier = 1f;
 
-    private int score = 0;
+    private int _score = 0;
 
     public Action<float> UpdatePower;
     public Action<int> UpdateScore;
+    public Action<bool> UpdateIsBuffed;
 
     public float MaxPower
     {
         get
         {
-            return maxPower;
+            return _maxPower;
         }
 
         set
         {
-            maxPower = value;
+            _maxPower = value;
         }
     }
 
@@ -37,15 +39,19 @@ public class PlayerStats : MonoBehaviour
     {
         get
         {
-            return power;
+            return _power;
         }
 
         set
         {
-            power = value;
+            _power = value;
+            if (_power > _maxPower)
+            {
+                _power = _maxPower;
+            }
             if (UpdatePower != null)
             {
-                UpdatePower(power);
+                UpdatePower(_power);
             }
         }
     }
@@ -54,12 +60,12 @@ public class PlayerStats : MonoBehaviour
     {
         get
         {
-            return moveSpeed;
+            return _moveSpeed;
         }
 
         set
         {
-            moveSpeed = value;
+            _moveSpeed = value;
         }
     }
 
@@ -67,12 +73,13 @@ public class PlayerStats : MonoBehaviour
     {
         get
         {
-            return moveSpeedModifier;
+            return _moveSpeedModifier;
         }
 
         set
         {
-            moveSpeedModifier = value;
+            _moveSpeedModifier = value;
+            MoveSpeed = MoveSpeed * value;
         }
     }
 
@@ -80,12 +87,12 @@ public class PlayerStats : MonoBehaviour
     {
         get
         {
-            return jumpHeight;
+            return _jumpHeight;
         }
 
         set
         {
-            jumpHeight = value;
+            _jumpHeight = value;
         }
     }
 
@@ -93,12 +100,13 @@ public class PlayerStats : MonoBehaviour
     {
         get
         {
-            return jumpHeightModifier;
+            return _jumpHeightModifier;
         }
 
         set
         {
-            jumpHeightModifier = value;
+            _jumpHeightModifier = value;
+            JumpHeight = JumpHeight * value;
         }
     }
 
@@ -106,16 +114,53 @@ public class PlayerStats : MonoBehaviour
     {
         get
         {
-            return score;
+            return _score;
         }
 
         set
         {
-            score = value;
+            _score = value;
             if (UpdateScore != null)
             {
-                UpdateScore(score);
+                UpdateScore(_score);
             }
         }
     }
+
+    public bool IsBuffed
+    {
+        get
+        {
+            return _isBuffed;
+        }
+
+        set
+        {
+            _isBuffed = value;
+        }
+    }
+
+    public IEnumerator ApplyBuff(float duration)
+    {
+        if (UpdateIsBuffed != null)
+        {
+            IsBuffed = true;
+            UpdateIsBuffed(IsBuffed);
+        }
+
+        // X ammount of seconds timer
+
+        // Reset Modifiers
+        MoveSpeedModifier = 1;
+        JumpHeightModifier = 1;
+
+        if (UpdateIsBuffed != null)
+        {
+            IsBuffed = false;
+            UpdateIsBuffed(IsBuffed);
+        }
+
+        yield return new WaitForEndOfFrame();
+    }
 }
+

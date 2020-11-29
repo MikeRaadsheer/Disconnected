@@ -6,7 +6,6 @@ using System;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    public Action<bool, EffectType> IsBuffed;
     private PlayerStats _stats;
     private CharacterController _controller;
 

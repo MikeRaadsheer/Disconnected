@@ -10,7 +10,7 @@ public class PickUpAlert : MonoBehaviour
 
     public void Alert()
     {
-        if(PickedUp != null)
+        if (PickedUp != null)
         {
             PickedUp(obj, transform.position);
             Destroy(gameObject);

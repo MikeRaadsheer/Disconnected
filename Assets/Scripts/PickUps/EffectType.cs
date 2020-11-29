@@ -1,1 +1,1 @@
-﻿public enum EffectType { NONE, SPEED, JUMP_HEIGHT, BUFF }
+﻿public enum EffectType { NONE, BUFF }
