@@ -24,12 +24,17 @@ public class PlayerJump : MonoBehaviour
     void Start()
     {
         _stats = GetComponent<PlayerStats>();
+        _stats.UpdateJumpMod += UpdateJump;
         _controller = GetComponent<CharacterController>();
 
         _jumpHeight = _stats.JumpHeight;
         _groundCheck = GetComponent<Transform>();
     }
 
+    private void UpdateJump(float jumpMod)
+    {
+        _jumpHeight = _stats.JumpHeight * _stats.JumpHeightModifier;
+    }
 
     void FixedUpdate()
     {

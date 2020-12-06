@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1088149284849028402}
   - component: {fileID: 1607435370851917760}
   - component: {fileID: 6182069371033354067}
-  - component: {fileID: 5107374609025506895}
+  - component: {fileID: 4370935593989349241}
+  - component: {fileID: 5147817909945376856}
   m_Layer: 0
   m_Name: JumpBuff
   m_TagString: Buff
@@ -109,7 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4667a66da5119b48aee13283dca82ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5107374609025506895
+  _axis: 1
+--- !u!114 &4370935593989349241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,9 +120,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1448222231571868903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35143cff0beb1eb458ca13006848cce2, type: 3}
+  m_Script: {fileID: 11500000, guid: ba5a308db65dae144b488003b78612be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 10
-  modifierAmount: 1.5
+  obj: {fileID: 4632533873040936486, guid: 4a81a82b438b06f439b6cdbbfa94e150, type: 3}
+--- !u!114 &5147817909945376856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448222231571868903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b590ec19228d1004d89e269135961502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   type: 1
+  duration: 30
+  amount: 2
+  color: {r: 1, g: 0.740566, b: 0.740566, a: 0}

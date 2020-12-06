@@ -14,7 +14,13 @@ public class Power : PickUp
 
     public override void Run()
     {
-        _stats.Power += amount;
+        if (_stats.Power == _stats.MaxPower)
+        {
+            _stats.Score += 10;
+        }else
+        {
+            _stats.Power += amount;
+        }
     }
 
 }

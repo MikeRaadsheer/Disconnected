@@ -5,15 +5,18 @@ using System;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField]
     private bool _isBuffed = false;
 
     private float _maxPower = 100f;
     private float _power = 100f;
 
     private float _moveSpeed = 20f;
+    [SerializeField]
     private float _moveSpeedModifier = 1f;
 
     private float _jumpHeight = 3f;
+    [SerializeField]
     private float _jumpHeightModifier = 1f;
 
     private int _score = 0;
@@ -21,6 +24,8 @@ public class PlayerStats : MonoBehaviour
     public Action<float> UpdatePower;
     public Action<int> UpdateScore;
     public Action<bool> UpdateIsBuffed;
+    public Action<float> UpdateSpeedMod;
+    public Action<float> UpdateJumpMod;
 
     public float MaxPower
     {
@@ -79,7 +84,10 @@ public class PlayerStats : MonoBehaviour
         set
         {
             _moveSpeedModifier = value;
-            MoveSpeed = MoveSpeed * value;
+            if(UpdateSpeedMod != null)
+            {
+                UpdateSpeedMod(value);
+            }
         }
     }
 
@@ -106,11 +114,14 @@ public class PlayerStats : MonoBehaviour
         set
         {
             _jumpHeightModifier = value;
-            JumpHeight = JumpHeight * value;
+            if (UpdateJumpMod != null)
+            {
+                UpdateJumpMod(value);
+            }
         }
     }
 
-    public int Scoire
+    public int Score
     {
         get
         {
@@ -140,7 +151,12 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public IEnumerator ApplyBuff(float duration)
+    public void ApplyBuff(float duration)
+    {
+        StartCoroutine(ActiveBuff(duration));
+    }
+
+    private IEnumerator ActiveBuff(float duration)
     {
         if (UpdateIsBuffed != null)
         {
@@ -149,6 +165,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         // X ammount of seconds timer
+        yield return new WaitForSeconds(duration);
 
         // Reset Modifiers
         MoveSpeedModifier = 1;
@@ -159,8 +176,6 @@ public class PlayerStats : MonoBehaviour
             IsBuffed = false;
             UpdateIsBuffed(IsBuffed);
         }
-
-        yield return new WaitForEndOfFrame();
     }
 }
 

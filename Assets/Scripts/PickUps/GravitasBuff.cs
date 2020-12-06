@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OverClockBuff : PickUp
+public class GravitasBuff : PickUp
 {
     private PlayerStats _stats;
     private BuffFilter _filter;
@@ -16,7 +16,7 @@ public class OverClockBuff : PickUp
 
     public override void Run()
     {
-        _stats.MoveSpeedModifier = amount;
+        _stats.JumpHeightModifier = amount;
         _filter.SetFilterColor(color);
         _stats.ApplyBuff(duration);
     }

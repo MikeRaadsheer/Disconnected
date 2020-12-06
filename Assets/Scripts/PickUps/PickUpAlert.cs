@@ -13,7 +13,7 @@ public class PickUpAlert : MonoBehaviour
         if (PickedUp != null)
         {
             PickedUp(obj, transform.position);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

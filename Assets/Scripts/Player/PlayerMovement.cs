@@ -15,8 +15,14 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _stats = GetComponent<PlayerStats>();
-        _moveSpeed = _stats.MoveSpeed; 
+        _stats.UpdateSpeedMod += UpdateSpeed;
+        _moveSpeed = _stats.MoveSpeed * _stats.MoveSpeedModifier; 
         _controller = GetComponent<CharacterController>();
+    }
+
+    private void UpdateSpeed(float speedMod)
+    {
+        _moveSpeed = _stats.MoveSpeed * speedMod;
     }
 
     void FixedUpdate()
